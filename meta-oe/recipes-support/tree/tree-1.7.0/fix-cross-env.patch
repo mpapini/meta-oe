@@ -1,0 +1,36 @@
+From 945a5861bb19a34d31119bc38f813513296ce2ad Mon Sep 17 00:00:00 2001
+From: "Hongjun.Yang" <hongjun.yang@windriver.com>
+Date: Thu, 30 Oct 2014 20:38:06 +0800
+Subject: [PATCH] Fix the cross-compiling issue
+
+Upstream-Status: Pending
+
+Signed-off-by: Hongjun.Yang <hongjun.yang@windriver.com>
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e91f1f6..e496a52 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,13 +18,13 @@
+ 
+ prefix = /usr
+ 
+-CC=gcc
++#CC=gcc
+ 
+ VERSION=1.7.0
+ TREE_DEST=tree
+-BINDIR=${prefix}/bin
++BINDIR=${DESTDIR}/${prefix}/bin
+ MAN=tree.1
+-MANDIR=${prefix}/man/man1
++MANDIR=${DESTDIR}/${prefix}/man/man1
+ OBJS=tree.o unix.o html.o xml.o json.o hash.o color.o
+ 
+ # Uncomment options below for your particular OS:
+-- 
+1.9.1
+
