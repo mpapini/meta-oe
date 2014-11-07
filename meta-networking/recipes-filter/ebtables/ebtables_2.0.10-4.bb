@@ -27,6 +27,16 @@ S = "${WORKDIR}/ebtables-v${PV}"
 
 inherit update-rc.d systemd
 
+python __anonymous () {
+    import re
+
+    multilib=d.getVar('MLPREFIX', True) or ""
+    searchstr = "lib.?32"
+    reg = re.compile(searchstr)
+    if reg.search(multilib):
+        d.appendVar('CFLAGS' ,' -DKERNEL_64_USERSPACE_32 -DEBT_MIN_ALIGN=8')
+}
+
 EXTRA_OEMAKE = " \
         BINDIR=${base_sbindir} \
         MANDIR=${mandir} \
