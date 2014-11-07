@@ -74,6 +74,7 @@ pkg_postinst_${PN}() {
 }
 
 PACKAGES =+ "libcurlpp libcurlpp-dev libcurlpp-staticdev"
+RPROVIDES_lib${BPN} = "${PN}"
 
 FILES_lib${BPN} = "${libdir}/lib*.so.* \
 		"
